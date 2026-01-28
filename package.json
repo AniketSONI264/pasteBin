@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@neondatabase/serverless": "^0.10.4",
+=======
+    "@vercel/postgres": "^0.10.0",
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
     "nanoid": "^5.0.7",
     "next": "^15.1.4",
     "react": "^19.0.0",

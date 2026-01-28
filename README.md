@@ -1,7 +1,15 @@
 # 🚀 Pastebin-Lite
 
+<<<<<<< HEAD
 A modern, feature-rich pastebin service built with Next.js 15 and Neon Postgres. Share code and text snippets with optional expiry constraints and view limits.
 
+=======
+A modern, feature-rich pastebin service built with Next.js 15 and Vercel Postgres. Share code and text snippets with optional expiry constraints and view limits.
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
 
 ## ✨ Features
 
@@ -18,7 +26,11 @@ A modern, feature-rich pastebin service built with Next.js 15 and Neon Postgres.
 
 - **Frontend**: Next.js 15 (App Router), React 19, TypeScript
 - **Styling**: Tailwind CSS with custom terminal theme
+<<<<<<< HEAD
 - **Database**: Neon Postgres (serverless PostgreSQL)
+=======
+- **Database**: Vercel Postgres (PostgreSQL)
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
 - **Deployment**: Vercel
 - **Validation**: Zod
 - **ID Generation**: nanoid
@@ -46,9 +58,32 @@ npm install
 
 ### 3. Set Up Environment Variables
 
+<<<<<<< HEAD
 Create a `.env.local` file in the root directory.
 
 **Note**: You'll get the `DATABASE_URL` from Vercel after deploying and adding a Neon database (see Deployment section).
+=======
+Create a `.env.local` file in the root directory:
+
+```env
+# Vercel Postgres Connection (get from Vercel dashboard)
+POSTGRES_URL="postgres://username:password@host:port/database"
+POSTGRES_PRISMA_URL="postgres://username:password@host:port/database?pgbouncer=true"
+POSTGRES_URL_NON_POOLING="postgres://username:password@host:port/database"
+POSTGRES_USER="username"
+POSTGRES_HOST="host"
+POSTGRES_PASSWORD="password"
+POSTGRES_DATABASE="database"
+
+# Optional: Set base URL (auto-detected if not provided)
+NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+
+# For testing with deterministic time
+TEST_MODE=0
+```
+
+**Note**: You can get these credentials from Vercel after creating a Postgres database (see Deployment section).
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
 
 ### 4. Run Development Server
 
@@ -77,14 +112,24 @@ git push -u origin main
 3. Import your GitHub repository
 4. Click **"Deploy"** (no configuration needed)
 
+<<<<<<< HEAD
 ### Step 3: Add Neon Postgres Database
+=======
+### Step 3: Add Postgres Database
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
 
 1. After deployment, go to your project dashboard
 2. Click **"Storage"** tab
 3. Click **"Create Database"**
+<<<<<<< HEAD
 4. Select **"Neon Postgres"**
 5. Choose a name and region, then click **"Create"**
 6. Vercel will automatically add the `DATABASE_URL` environment variable
+=======
+4. Select **"Postgres"**
+5. Choose a name and region, then click **"Create"**
+6. Vercel will automatically add the environment variables to your project
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
 
 ### Step 4: Redeploy
 
@@ -94,6 +139,7 @@ The database schema will be automatically created on the first request to `/api/
 
 ## 🗄️ Persistence Layer
 
+<<<<<<< HEAD
 ### Database Choice: Neon Postgres
 
 **Why Neon Postgres?**
@@ -105,6 +151,17 @@ The database schema will be automatically created on the first request to `/api/
 - ✅ **Branching**: Database branching for development
 
 **Note**: We switched from the deprecated `@vercel/postgres` to Neon, which is Vercel's recommended database solution.
+=======
+### Database Choice: Vercel Postgres
+
+**Why Postgres?**
+- ✅ **Serverless-Friendly**: Works perfectly with Vercel's serverless functions
+- ✅ **ACID Compliance**: Guarantees data consistency
+- ✅ **Atomic Operations**: No race conditions on view counting
+- ✅ **Relational Data Model**: Easy to extend with features
+- ✅ **SQL Familiarity**: Standard PostgreSQL syntax
+- ✅ **Managed Service**: Zero server management
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
 
 ### Database Schema
 
@@ -225,15 +282,25 @@ This allows deterministic testing of expiry logic.
 ### Security
 
 - **XSS Prevention**: Content is rendered as plain text (no HTML injection)
+<<<<<<< HEAD
 - **SQL Injection Protection**: Parameterized queries
+=======
+- **SQL Injection Protection**: Parameterized queries via Vercel Postgres
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
 - **No Secrets in Code**: All credentials in environment variables
 - **Input Validation**: Server-side validation with Zod
 
 ### Performance
 
+<<<<<<< HEAD
 - **Connection Pooling**: Efficient database connections with Neon
 - **Indexed Queries**: Fast lookups for expired pastes
 - **Serverless Functions**: Scale automatically
+=======
+- **Connection Pooling**: Efficient database connections
+- **Indexed Queries**: Fast lookups for expired pastes
+- **Edge Runtime**: Fast serverless functions
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
 - **Minimal Dependencies**: Only essential packages
 
 ## 📝 Project Structure
@@ -257,7 +324,11 @@ pastebin-lite/
 │   ├── not-found.tsx              # 404 page
 │   └── globals.css                # Global styles
 ├── lib/
+<<<<<<< HEAD
 │   ├── db.ts                      # Database operations (Neon)
+=======
+│   ├── db.ts                      # Database operations
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
 │   ├── paste.ts                   # Paste business logic
 │   ├── time.ts                    # Time utilities (TEST_MODE)
 │   ├── validation.ts              # Input validation
@@ -292,9 +363,15 @@ npm run lint
 
 ### Database Connection Issues
 
+<<<<<<< HEAD
 **Error**: `Connection refused` or `DATABASE_URL not set`
 - Ensure `DATABASE_URL` is set correctly in `.env.local` or Vercel environment variables
 - Check if you've created a Neon database in Vercel Storage
+=======
+**Error**: `Connection refused`
+- Ensure `POSTGRES_URL` is set correctly in `.env.local`
+- Check if you're using the correct Vercel Postgres credentials
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
 
 ### Deployment Fails
 
@@ -323,4 +400,10 @@ If you have questions or need help, please open an issue on GitHub.
 
 ---
 
+<<<<<<< HEAD
 Built with ❤️ using Next.js and Neon Postgres
+=======
+Built with ❤️ using Next.js and Vercel Postgres
+#   P a s t e B i n  
+ 
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab

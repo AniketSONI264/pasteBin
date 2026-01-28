@@ -219,7 +219,11 @@ export default function HomePage() {
         {/* Footer */}
         <div className="mt-8 text-center text-gray-500 text-sm">
           <p>Pastes with constraints will self-destruct automatically</p>
+<<<<<<< HEAD
           <p className="mt-2">Built with Next.js + Neon Postgres</p>
+=======
+          <p className="mt-2">Built with Next.js + Vercel Postgres</p>
+>>>>>>> 033af332133643d5bf03cdad9f959e894b44a7ab
         </div>
       </div>
     </div>
